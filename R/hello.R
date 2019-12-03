@@ -1,8 +1,5 @@
 #' @title hello
 #' @description display some scripts
-#' This is an example function named 'hello'
-#' which prints 'Hello, world!'.
-#'
 #' You can learn more about package authoring with RStudio at:
 #'
 #'   http://r-pkgs.had.co.nz/
@@ -12,8 +9,7 @@
 #'   Install Package:           'Ctrl + Shift + B'
 #'   Check Package:             'Ctrl + Shift + E'
 #'   Test Package:              'Ctrl + Shift + T'
-#'
-#' @param none
+#' If "Build Package Documentation" shortcut not working, check within Tools -> Project Options... -> Build Tools; there should be a checkbox:
 #' @examples
 #' hello()
 #'
@@ -22,5 +18,30 @@ hello <- function() {
 print("Install Package:           'Ctrl + Shift + B'")
 print("Check Package:             'Ctrl + Shift + E'")
 print("Test Package:              'Ctrl + Shift + T'")
+print("Make Document:             'Ctrl + Shift + D'")
 print("Knit document:              knitr::knit('README.Rmd')")
+}
+
+#' @title test1
+#' @description test script
+test1 <- function(){
+  s3 <- read.fasta("bic2337.txt.fa")
+  s1 <- DNAString("ATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTGATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTGATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTGATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTGATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTGATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTGATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTGATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTGATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTGATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTGATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTGATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTGATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTGATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTGATCGATCGATCGATCGATCGATCGACTGACTAGCTAGCTACGATCGACTG")
+  s1
+  s4 <- DNAString("ATCGA")
+  s1
+  s2 <- DNAString(paste0(rep(s1, 20000), collate=""))
+  s2
+
+  matchPattern(s4, enhancerFB)
+
+  data(TFBS)
+  DNAString(s3$ENSG00000108179)
+  sk13 <- spectrumKernel(k=14, normalized=FALSE)
+  system.time(kmerFreq <- drop(getExRep(s1, sk13)))
+  kmerFreq
+  system.time(kmerFreq <- drop(getExRep(rep(enhancerFB,20), sk13)))
+  kmerFreq <- getExRep(rep(enhancerFB,10), sk13)
+  kmerFreq[1:10,1:10]
+  append()
 }
