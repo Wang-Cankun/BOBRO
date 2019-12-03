@@ -12,7 +12,9 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     dplyr,
-    ggvis
+    ggvis,
+    kebabs,
+    seqinr
 Suggests:
     dplyr,
     ggvis
