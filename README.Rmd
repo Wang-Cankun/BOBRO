@@ -1,9 +1,4 @@
----
-output: github_document
----
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -63,7 +58,6 @@ Howto’s and faqs examples:
 
 
 ## References
+  - Guojun Li, Bingqiang Liu, Qin Ma, Ying Xu, [A new framework for identifying cis-regulatory motifs in prokaryotes]
+    (https://academic.oup.com/nar/article/39/7/e42/1151705), Nucleic Acids Research, Volume 39, Issue 7, 1 April 2011, Page e42, https://doi.org/10.1093/nar/gkq948
 
-  - Li, et al. A new framework for identifying cis-regulatory motifs in prokaryotes. Nucleic Acids Research
-    (2011). <https://doi.org/10.1093/nar/gkq948>
-    [link](https://academic.oup.com/nar/article/39/7/e42/1151705)

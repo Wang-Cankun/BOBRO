@@ -1,9 +1,4 @@
----
-output: github_document
----
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 
 
 # BOBRO
@@ -29,7 +24,8 @@ everything about the Giotto workflow.
 
 ## Requirements
 
-  - R (\>= 3.5.1)
+The 
+  - R (\>= 3.6.1)
   - Windows, MacOS, Linux
 
 
@@ -57,6 +53,6 @@ Howto’s and faqs examples:
 
 ## References
 
-  - Li, et al. A new framework for identifying cis-regulatory motifs in prokaryotes. Nucleic Acids Research
+  - Li, et al. [A new framework for identifying cis-regulatory motifs in prokaryotes]
+    (https://academic.oup.com/nar/article/39/7/e42/1151705). Nucleic Acids Research
     (2011). <https://doi.org/10.1093/nar/gkq948>
-    [link](https://academic.oup.com/nar/article/39/7/e42/1151705)
