@@ -1,0 +1,19 @@
+Package: BOBRO
+Type: Package
+Title: BOBRO R package
+Version: 0.1.0
+Author: Cankun Wang, Qin Ma
+Maintainer: Cankun Wang <cankun.wang@osumc.edu>
+Description: BOBRO is the an algorithm for prediction of cis-regulatory motifs in a given set of promoter sequences. 
+    The algorithm originally published by Ma et al, 2011 at Nucelic Acids Research(https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gkq948).
+    This package provides an R implementation of the BOBRO algorithm, with significantly improved efficiency and comprehensive functions.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    dplyr,
+    ggvis
+Suggests:
+    dplyr,
+    ggvis
+RoxygenNote: 7.0.2
