@@ -2,7 +2,10 @@ Package: BOBRO
 Type: Package
 Title: BOBRO R package
 Version: 0.1.0
-Author: Cankun Wang, Qin Ma
+Authors@R: c(
+  person(given = 'Qin', family = 'Ma', email = 'qin.ma@osumc.edu', role = 'aut', comment = c(ORCID = '0000-0002-3264-8392')),
+  person(given = 'Cankun', family = 'Wang', email = 'cankun.wang@osumc.edu', role = c('aut', 'cre'), comment = c(ORCID = '0000-0002-0225-9855'))
+  )
 Maintainer: Cankun Wang <cankun.wang@osumc.edu>
 Description: BOBRO is the an algorithm for prediction of cis-regulatory motifs in a given set of promoter sequences. 
     The algorithm originally published by Ma et al, 2011 at Nucelic Acids Research(https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gkq948).
@@ -10,12 +13,18 @@ Description: BOBRO is the an algorithm for prediction of cis-regulatory motifs i
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports:
-    dplyr,
-    ggvis,
-    kebabs,
-    seqinr
-Suggests:
-    dplyr,
-    ggvis
 RoxygenNote: 7.0.2
+Depends:
+    R (>= 3.4.0),
+    methods,
+Imports:
+  dplyr,
+  ggvis,
+  seqinr,
+  pbapply
+Suggests:
+  dplyr,
+  ggvis
+Remotes: 
+  bioc::release/kebabs
+
