@@ -21,7 +21,8 @@ Imports:
   dplyr,
   ggvis,
   seqinr,
-  pbapply
+  pbapply,
+  Biostrings
 Suggests:
   dplyr,
   ggvis

@@ -4,7 +4,7 @@
 \alias{test2}
 \title{test2}
 \usage{
-test2(x)
+test2()
 }
 \description{
 test script
