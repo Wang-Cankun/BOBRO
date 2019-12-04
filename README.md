@@ -7,13 +7,12 @@
 <!-- badges: end -->
 
 
-BOBRO is the an algorithm for prediction of cis-regulatory motifs in a given set of promoter sequences. 
+BOBRO is the an R package for prediction of cis-regulatory motifs in a given set of promoter sequences. 
     The algorithm originally published by Ma et al, 2011 at Nucelic Acids Research(https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gkq948).
-    This package provides an R implementation of the BOBRO algorithm, with significantly improved efficiency and comprehensive functions.
+    This package provides an R implementation of the BOBRO algorithm, developed and maintained by the BMBL at OSU.
 
 Make sure to check out the **Examples** and **FAQ** section to learn
-everything about the Giotto workflow.
-
+everything about the workflow.
 
 
 ## Latest News
@@ -24,8 +23,7 @@ everything about the Giotto workflow.
 
 ## Requirements
 
-The 
-  - R (\>= 3.6.1)
+  - R (\>= 3.5.1)
   - Windows, MacOS, Linux
 
 
@@ -52,7 +50,6 @@ Howto’s and faqs examples:
 
 
 ## References
+  - Guojun Li, Bingqiang Liu, Qin Ma, Ying Xu, [A new framework for identifying cis-regulatory motifs in prokaryotes]
+    (https://academic.oup.com/nar/article/39/7/e42/1151705), Nucleic Acids Research, Volume 39, Issue 7, 1 April 2011, Page e42, https://doi.org/10.1093/nar/gkq948
 
-  - Li, et al. [A new framework for identifying cis-regulatory motifs in prokaryotes]
-    (https://academic.oup.com/nar/article/39/7/e42/1151705). Nucleic Acids Research
-    (2011). <https://doi.org/10.1093/nar/gkq948>
