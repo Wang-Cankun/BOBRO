@@ -1,15 +1,15 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 
-# BOBRO
+# Bobro
 
 <!-- badges: start -->
 <!-- badges: end -->
 
 
-BOBRO is the an R package for prediction of cis-regulatory motifs in a given set of promoter sequences. 
+Bobro is the an R package for prediction of cis-regulatory motifs in a given set of promoter sequences. 
     The algorithm originally published by Ma et al, 2011 at Nucelic Acids Research(https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gkq948).
-    This package provides an R implementation of the BOBRO algorithm, developed and maintained by the BMBL at OSU.
+    This package provides an R implementation of the Bobro algorithm, developed and maintained by the BMBL at OSU.
 
 Make sure to check out the **Examples** and **FAQ** section to learn
 everything about the workflow.
@@ -20,7 +20,6 @@ everything about the workflow.
   - to-do
 
  
-
 ## Requirements
 
   - R (\>= 3.5.1)
@@ -29,12 +28,12 @@ everything about the workflow.
 
 ## Installation
 
-You can install BOBRO R package with:
+You can install Bobro R package with:
 
 ``` r
 library(remotes)
 # to install the latest stable version (advised)
-remotes::install_github("Wang-Cankun/BOBRO")
+remotes::install_github("Wang-Cankun/Bobro")
 
 ```
 

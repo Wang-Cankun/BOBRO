@@ -1,15 +1,15 @@
-Package: BOBRO
+Package: Bobro
 Type: Package
-Title: BOBRO R package
+Title: Bobro R package
 Version: 0.1.0
 Authors@R: c(
   person(given = 'Qin', family = 'Ma', email = 'qin.ma@osumc.edu', role = 'aut', comment = c(ORCID = '0000-0002-3264-8392')),
   person(given = 'Cankun', family = 'Wang', email = 'cankun.wang@osumc.edu', role = c('aut', 'cre'), comment = c(ORCID = '0000-0002-0225-9855'))
   )
 Maintainer: Cankun Wang <cankun.wang@osumc.edu>
-Description: BOBRO is the an algorithm for prediction of cis-regulatory motifs in a given set of promoter sequences. 
+Description: Bobro is the an algorithm for prediction of cis-regulatory motifs in a given set of promoter sequences. 
     The algorithm originally published by Ma et al, 2011 at Nucelic Acids Research(https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gkq948).
-    This package provides an R implementation of the BOBRO algorithm, with significantly improved efficiency and comprehensive functions.
+    This package provides an R implementation of the Bobro algorithm, with significantly improved efficiency and comprehensive functions.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
