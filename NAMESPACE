@@ -1,2 +1,3 @@
 exportPattern("^[[:alpha:]]+")
 importFrom(pbapply, pblapply)
+importClassesFrom(Matrix,dgCMatrix)
