@@ -8,7 +8,7 @@
 #'
 NULL
 
-# The Bobro Object structure inspired from Seurat
+# The Bobro Object structure inspired from Bobro
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Class definitions
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -66,13 +66,11 @@ BobroCommand <- setClass(
 #' object was designed to be as self-contained as possible, and easily extendible to new methods.
 #'
 #' @slot assays A list of assays for this project
-#' @slot meta.data Contains meta-information about each cell, starting with number of genes detected (nGene)
+#' @slot meta_data Contains meta-information about each cell, starting with number of genes detected (nGene)
 #' and the original identity class (orig.ident); more information is added using \code{AddMetaData}
-#' @slot active.assay Name of the active, or default, assay; settable using \code{\link{DefaultAssay}}
-#' @slot active.ident The active cluster identity for this Bobro object; settable using \code{\link{Idents}}
 #' @slot graphs A list of \code{\link{Graph-class}} objects
 #' @slot neighbors ...
-#' @slot reductions A list of dimmensional reduction objects for this object
+#' @slot approximations A list of matrix approximations for this object
 #' @slot project.name Name of the project
 #' @slot misc A list of miscellaneous information
 #' @slot version Version of Bobro this object was built under
@@ -86,13 +84,11 @@ BobroCommand <- setClass(
 Bobro <- setClass(
   Class = 'Bobro',
   slots = c(
-    assays = 'list',
-    meta_data = 'data.frame',
-    active_assay = 'character',
-    active_ident = 'factor',
+    sequence = 'ANY',
+    meta_data = 'list',
     graphs = 'list',
     neighbors = 'list',
-    reductions = 'list',
+    approximations = 'list',
     project_name = 'character',
     misc = 'list',
     version = 'package_version',
@@ -105,3 +101,101 @@ Bobro <- setClass(
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Functions
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#' Create a Bobro object
+#'
+#' Create a Bobro object from a DNA string object (usually read fasta format file from package Biostrings).
+#'
+
+#' @param project Sets the project name for the Bobro object.
+#' @param meta_data Additional metadata to add to the Bobro object.
+#' @importFrom utils packageVersion
+#' @export
+#'
+#' @examples
+#' DNAStringObject = readDNAStringSet("data/test1.fa")
+#' my.object <- CreateBobroObject(DNAStringObject)
+#' my.object
+#'
+#'
+CreateBobroObject <- function(
+  DNAStringObject,
+  project = 'BobroProject',
+  meta_data = NULL
+) {
+  if (class(DNAStringObject) != 'DNAStringSet') {
+    stop("x must be a DNAStringSet object from package Biostrings! ")
+  }
+  header = names(DNAStringObject)
+  frequency = alphabetFrequency(DNAStringObject, baseOnly=T, as.prob=T)
+  base_frequency = alphabetFrequency(DNAStringObject, as.prob=T,collapse=T)[1:4]
+  init.meta_data <- list(header=header,frequency=frequency,base_frequency=base_frequency)
+
+  object <- new(
+    Class = 'Bobro',
+    sequence = DNAStringObject,
+    meta_data = init.meta_data,
+    project_name = project,
+    version = packageVersion(pkg = 'Bobro')
+  )
+
+  return(object)
+}
+
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Internal
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+# Internal AddMetaData defintion
+#
+# @param object An object
+# @param metadata A vector, list, or data.frame with metadata to add
+# @param col.name A name for meta data if not a named list or data.frame
+#
+# @return object with metadata added
+#
+.AddMetaData <- function(object, metadata, col.name = NULL) {
+  if (is.null(x = col.name) && is.atomic(x = metadata)) {
+    stop("'col.name' must be provided for atomic metadata types (eg. vectors)")
+  }
+  if (inherits(x = metadata, what = c('matrix', 'Matrix'))) {
+    metadata <- as.data.frame(x = metadata)
+  }
+  col.name <- col.name %||% names(x = metadata) %||% colnames(x = metadata)
+  if (is.null(x = col.name)) {
+    stop("No metadata name provided and could not infer it from metadata object")
+  }
+  object[[col.name]] <- metadata
+  # if (class(x = metadata) == "data.frame") {
+  #   for (ii in 1:ncol(x = metadata)) {
+  #     object[[colnames(x = metadata)[ii]]] <- metadata[, ii, drop = FALSE]
+  #   }
+  # } else {
+  #   object[[col.name]] <- metadata
+  # }
+  return(object)
+}
+
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# S4 methods
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+setMethod(
+  f = "show",
+  signature = "Bobro",
+  definition = function(object) {
+    n_sequences <- length(object@meta_data$header)
+    range_sequences <- range(width(object@sequence))
+    cat("An object of class", class(x = object), "\n")
+    cat(
+      n_sequences,
+      'sequences with length from',
+      range_sequences[1],
+      'to',
+      range_sequences[2],
+      "\n"
+    )
+    cat('\n')
+  }
+)

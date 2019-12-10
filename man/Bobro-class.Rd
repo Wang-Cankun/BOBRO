@@ -19,18 +19,14 @@ object was designed to be as self-contained as possible, and easily extendible t
 \describe{
 \item{\code{assays}}{A list of assays for this project}
 
-\item{\code{meta.data}}{Contains meta-information about each cell, starting with number of genes detected (nGene)
+\item{\code{meta_data}}{Contains meta-information about each cell, starting with number of genes detected (nGene)
 and the original identity class (orig.ident); more information is added using \code{AddMetaData}}
-
-\item{\code{active.assay}}{Name of the active, or default, assay; settable using \code{\link{DefaultAssay}}}
-
-\item{\code{active.ident}}{The active cluster identity for this Bobro object; settable using \code{\link{Idents}}}
 
 \item{\code{graphs}}{A list of \code{\link{Graph-class}} objects}
 
 \item{\code{neighbors}}{...}
 
-\item{\code{reductions}}{A list of dimmensional reduction objects for this object}
+\item{\code{approximations}}{A list of matrix approximations for this object}
 
 \item{\code{project.name}}{Name of the project}
 
