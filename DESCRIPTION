@@ -17,12 +17,9 @@ RoxygenNote: 7.0.2
 Depends:
     R (>= 3.4.0),
     methods,
-Imports:
-  dplyr,
-  ggvis,
-  seqinr,
-  pbapply,
-  Biostrings
+    Biostrings,
+    pbapply,
+    kebabs
 Suggests:
   dplyr,
   ggvis
