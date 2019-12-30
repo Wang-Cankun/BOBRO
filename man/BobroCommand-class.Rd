@@ -3,7 +3,6 @@
 \docType{class}
 \name{BobroCommand-class}
 \alias{BobroCommand-class}
-\alias{BobroCommand}
 \title{The BobroCommand Class}
 \description{
 The BobroCommand is used for logging commands that are run on a BobroObject. It stores parameters and timestamps

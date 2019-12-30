@@ -15,9 +15,7 @@ CreateBobroObject(DNAStringObject, project = "BobroProject", meta_data = NULL)
 Create a Bobro object from a DNA string object (usually read fasta format file from package Biostrings).
 }
 \examples{
-DNAStringObject = readDNAStringSet("data/test1.fa")
+DNAStringObject <- readDNAStringSet("data/test1.fa")
 my.object <- CreateBobroObject(DNAStringObject)
 my.object
-
-
 }

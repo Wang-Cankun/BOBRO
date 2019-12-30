@@ -25,4 +25,10 @@ Suggests:
   ggvis
 Remotes: 
   bioc::release/kebabs
-
+Collate: 
+    'object.R'
+    'all_accessors.R'
+    'all_generics.R'
+    'compare_sequence.R'
+    'general_functions.R'
+    'hello.R'

@@ -3,7 +3,6 @@
 \docType{class}
 \name{Graph-class}
 \alias{Graph-class}
-\alias{Graph}
 \title{The Graph Class}
 \description{
 The Graph class simply inherits from dgCMatrix. We do this to enable future expandability of graphs.
