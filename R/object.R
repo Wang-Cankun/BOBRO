@@ -83,6 +83,10 @@ setClass(
     graphs = "list",
     neighbors = "list",
     approximations = "list",
+    pval="list",
+    pwm="list",
+    instance="list",
+    consensus="list",
     project_name = "character",
     misc = "list",
     version = "package_version",
@@ -166,10 +170,62 @@ CreateBobroObject <- function(
     version = packageVersion(pkg = "Bobro"),
     parameters = default_parameter
   )
-
   return(object)
 }
 
+#' Find Bobro motif
+#'
+#'
+#' @param project Sets the project name for the Bobro object.
+#' @export
+#'
+#' @examples
+#' test_sequence <- Biostrings::readDNAStringSet("../data/cra.fa")
+#' object <- CreateBobroObject(test_sequence)
+#' object <- FindBobroMotif(object)
+#'
+FindBobroMotif <- function(object) {
+  quiet <- function(x) {
+    sink(tempfile())
+    on.exit(sink())
+    invisible(force(x))
+  }
+  result <- quiet(rGADEM::GADEM(object@sequence,verbose=0,numGeneration = 1,nmotifs = 10, pValue = 1, eValue = 100))
+  pwm <- lapply(result@motifList, function(x){
+    return(x@pwm[,1:14])
+  })
+
+  pval <- lapply(result@motifList, function(x){
+    return(x@alignList[[1]]@pval)
+  })
+
+  consensus <- lapply(result@motifList, function(x){
+    return(substr(x@alignList[[2]]@seq,1,14))
+  })
+  names(pwm) <- names(pval) <- names(consensus) <- paste("Moitf",seq(1:length(pwm)),sep="-")
+
+  object@pwm <- pwm[1:10]
+  object@pval <- pval[1:10]
+  object@consensus <- consensus[1:10]
+  return(object)
+}
+
+#' Plot motif logo
+#'
+#'
+#' @param project Sets the project name for the Bobro object.
+#' @export
+#'
+#' @examples
+#' test_sequence <- Biostrings::readDNAStringSet("../data/cra.fa")
+#' object <- CreateBobroObject(test_sequence)
+#' object <- FindBobroMotif(object)
+#' PlotBobroMotif(object)
+#'
+PlotBobroMotif <- function(object) {
+  p1 <- ggseqlogo::ggseqlogo(object@pwm)
+  print(p1)
+}
 
 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 # Internal

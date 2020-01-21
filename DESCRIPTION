@@ -19,7 +19,9 @@ Depends:
     methods,
     Biostrings,
     pbapply,
-    kebabs
+    kebabs,
+    motifmatchr,
+    TFBSTools
 Suggests:
   dplyr,
   ggvis
@@ -28,7 +30,6 @@ Remotes:
 Collate: 
     'object.R'
     'all_accessors.R'
-    'all_generics.R'
     'compare_sequence.R'
     'general_functions.R'
     'hello.R'

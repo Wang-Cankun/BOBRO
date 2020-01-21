@@ -1,0 +1,38 @@
+---
+title: "Introduction to Bobro"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to Bobro}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, eval = FALSE,echo=F}
+# Run once to configure package to use pkgdown
+usethis::use_pkgdown()
+# Run to build the website
+pkgdown::build_site()
+```
+
+## Installation
+
+You can install Bobro R package with:
+
+``` r
+library(remotes)
+# to install the latest stable version (advised)
+remotes::install_github("Wang-Cankun/Bobro")
+
+```
+
+
+## Quick example
+``` {r}
+suppressPackageStartupMessages(Bobro)
+suppressPackageStartupMessages(seqinr)
+test_sequence <- Biostrings::readDNAStringSet("../data/cra.fa")
+object <- CreateBobroObject(test_sequence)
+object <- FindBobroMotif(object)
+PlotBobroMotif(object)
+```
