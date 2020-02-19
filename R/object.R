@@ -1,3 +1,8 @@
+## usethis namespace: start
+#' @importFrom Rcpp sourceCpp
+## usethis namespace: end
+NULL
+
 #' @importFrom Rcpp evalCpp
 #' @importFrom Matrix colSums rowSums colMeans rowMeans
 #' @importFrom methods setClass setOldClass setClassUnion slot

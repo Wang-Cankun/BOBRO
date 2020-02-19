@@ -17,6 +17,8 @@ RoxygenNote: 7.0.2
 Depends:
     R (>= 3.4.0),
     methods,
+    Rcpp,
+    RcppParallel,
     Biostrings,
     pbapply,
     kebabs,
@@ -28,8 +30,11 @@ Suggests:
 Remotes: 
   bioc::release/kebabs
 Collate: 
+    'RcppExports.R'
     'object.R'
     'all_accessors.R'
     'compare_sequence.R'
     'general_functions.R'
     'hello.R'
+LinkingTo: Rcpp
+Imports: Rcpp

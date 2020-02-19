@@ -59,3 +59,35 @@ test2 <- function() {
   object <- FindBobroMotif(object)
   PlotBobroMotif(object)
 }
+
+#' @title test3
+#' @description test script
+test2 <- function() {
+
+  library(Bobro)
+  library(kebabs)
+  library(microbenchmark)
+  library(stringdist)
+  DNAStringObject = readDNAStringSet("data/cra.fa")
+  #DNAStringObject = readDNAStringSet("data/soybean_bg_5000.fasta")
+  sk13 <- kebabs::spectrumKernel(k = 10, normalized = FALSE)
+  #sk13 <- kebabs::mismatchKernel(k = 10, m=0, normalized = FALSE)
+
+  system.time(kmerFreq <- kebabs::getExRep(DNAStringObject, sk13))
+
+  kmer <- colnames(kmerFreq)
+  length(kmer)
+
+
+  sourceCpp('src/test_editlib.cpp')
+  sourceCpp('src/test_editlib_all.cpp')
+
+
+  k2 <- c("AAAAAAAAAAAAAA","AAACACAAACAAAC")
+
+  microbenchmark(
+    stringdist(kmer[1],kmer[2]),
+    calc2(k1[1:2],14,2)
+  )
+
+}

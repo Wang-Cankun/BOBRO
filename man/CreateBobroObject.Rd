@@ -4,8 +4,7 @@
 \alias{CreateBobroObject}
 \title{Create a Bobro object}
 \usage{
-CreateBobroObject(DNAStringObject, project = "BobroProject",
-  meta_data = NULL)
+CreateBobroObject(DNAStringObject, project = "BobroProject", meta_data = NULL)
 }
 \arguments{
 \item{project}{Sets the project name for the Bobro object.}

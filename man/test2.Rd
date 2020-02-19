@@ -5,7 +5,11 @@
 \title{test2}
 \usage{
 test2()
+
+test2()
 }
 \description{
+test script
+
 test script
 }
